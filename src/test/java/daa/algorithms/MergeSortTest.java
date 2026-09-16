@@ -37,22 +37,22 @@ class MergeSortTest {
 
     @Test
     void testEdgeCases() {
-        // Пустой массив
+        // Empty array
         int[] empty = {};
         MergeSort.sort(empty, metrics);
         assertArrayEquals(new int[]{}, empty);
 
-        // 1 элемент
+        // 1 element
         int[] single = {42};
         MergeSort.sort(single, metrics);
         assertArrayEquals(new int[]{42}, single);
 
-        // Все одинаковые
+        // They're all the same
         int[] allSame = {5, 5, 5, 5, 5};
         MergeSort.sort(allSame, metrics);
         assertArrayEquals(new int[]{5, 5, 5, 5, 5}, allSame);
 
-        // Уже отсортированный
+        // Already sorted
         int[] sorted = {1, 2, 3, 4, 5, 6, 7};
         MergeSort.sort(sorted, metrics);
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7}, sorted);
