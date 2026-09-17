@@ -13,14 +13,14 @@ import java.util.Random;
 public class Benchmark {
 
     private static final int[] SIZES = {1_000, 10_000, 100_000, 1_000_000};
-    private static final int REPEAT_COUNT = 5;
+    private static final int REPEAT_COUNT = 100;
     private final Random random = new Random(42);
 
-    public List run() {
-        List results = new ArrayList<>();
+    public List<Result> run() {
+        List<Result> results = new ArrayList<>();
         String[] algorithms = {"MergeSort", "QuickSort", "QuickSelect"};
 
-        System.out.println("Starting benchmark suite...");
+        System.out.println("Starting benchmark suite (100 runs per case)...");
 
         for (String algorithm : algorithms) {
             for (InputType type : InputType.values()) {
@@ -47,6 +47,7 @@ public class Benchmark {
                         runs.add(new RunData(metrics.getTimeMs(), metrics.getComparisons(), metrics.getMaxDepth()));
                     }
 
+                    // Sort runs by execution time to pick the median run
                     runs.sort(Comparator.comparingDouble(RunData::timeMs));
                     RunData median = runs.get(REPEAT_COUNT / 2);
 

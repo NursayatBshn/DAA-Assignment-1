@@ -1,5 +1,7 @@
 package daa.bench;
 
+import java.util.Locale;
+
 public record Result(
         String algorithm,
         String input,
@@ -9,7 +11,7 @@ public record Result(
         int maxDepth
 ) {
     public String toCsvRow() {
-        return String.format("%s,%s,%d,%.4f,%d,%d",
+        return String.format(Locale.US ,"%s,%s,%d,%.4f,%d,%d",
                 algorithm, input, n, timeMs, comparisons, maxDepth);
     }
 }
